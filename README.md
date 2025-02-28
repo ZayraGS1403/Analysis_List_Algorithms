@@ -1,8 +1,11 @@
 # Time Comparison of Inserts in Different Data Structures
 
+-------
+
 ## 📌 Problem Statement
 is a project that implements and compares the efficiency of different data structures in Python, specifically LinkedList, DoublyLinkedList, and Array, focusing on random insertion and deletion operations. The project includes tools to measure the execution times of these operations, generate random data, and visualize results in graphs for comparative analysis. This repository is ideal for students, researchers, or developers interested in algorithms and data structures.
 
+------
 ## 📊 Features
 Implementation of LinkedList, DoublyLinkedList, and Array with random insertion and deletion methods.
 Random data generation for testing the structures.
@@ -10,11 +13,47 @@ Measurement of execution times for specific operations on each structure.
 Visualization of results using line and bar charts with Matplotlib.
 Unit tests to ensure the correctness of the implementations.
 
-
-
 ### Install the dependencies:
 ``` pip install matplotlib numpy```
 
+------
+### Analyze the results
+
+#### Initial Results: Without Optimized Doubly Linked List Traversal
+Insertion Time Analysis
+![img.png](img/img.png)
+![img.png](img/img3.png)
+
+The following graphs represent results before optimizing the doubly linked list traversal. Initially, the list could not traverse backward from the tail to the head, forcing a full traversal to reach the last node for insertion.
+
+Random Deletion Time Analysis
+
+![img.png](img/img2.png)
+![img4.jpg](img/img4.jpg)
+
+From the graphs, we observe that the Doubly Linked List takes the longest time to insert a new node. This is because it lacks backward traversal optimization, requiring a full list traversal to insert at the end, similar to a singly linked list.
+
+For random deletions, the Doubly Linked List is the most efficient. This could be due to CPU scheduling and processing time allocation differences.
+
+----------------------------
+#### Optimized Results: With Backward Traversal in Doubly Linked List
+The following graphs represent the results after implementing backward traversal from the tail to the head in the Doubly Linked List.
+
+Optimized Insertion Time Analysis
+
+![img4.jpg](img/img5.jpg)
+![img4.jpg](img/img6.jpg)
+
+After optimization, the Doubly Linked List now performs insertions faster than the Singly Linked List, as it no longer requires a full traversal to reach the last node.
+
+Optimized Deletion Time Analysis
+
+![img4.jpg](img/img7.jpg)
+![img4.jpg](img/img8.jpg)
+
+For random deletions, the Doubly Linked List remains the most efficient compared to other structures.
+
+---------
 ## Current Coverage
 
 Ensure you have coverage installed (pip install coverage) and run the following commands:
@@ -36,7 +75,7 @@ TOTAL                           294     18    94%
 
 
 ```
-
+------
 ## 🎨 Code Beautifier
 
 This code is formatted using black:```  https://github.com/psf/black. ```
@@ -44,6 +83,7 @@ Run the following command to format the code:
 
 ``` black . -l 120 ```
 
+-------
 ## Author
 Zayra Gutiérrez Solano
 
