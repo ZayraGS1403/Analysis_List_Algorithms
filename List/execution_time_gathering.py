@@ -30,7 +30,6 @@ def take_times(size, samples_by_size):
     samples_dll = [get_random_doubly_linked_list(size) for _ in range(samples_by_size)]
     samples_arr = [get_random_array(size) for _ in range(samples_by_size)]
 
-    # Usar lambdas para minimizar overhead
     return [
         take_time_for_operation(samples_ll, "Insert LL"),
         take_time_for_operation(samples_dll, "Insert DLL"),
@@ -59,7 +58,7 @@ def take_time_for_operation(samples_array, label):
             sample.insert_random(random.randint(0, MAX_VALUE))
         elif label == "Insert Array":
             sample.insert(
-                random.randint(5000, len(sample) - 1), random.randint(0, MAX_VALUE)
+                0, random.randint(0, MAX_VALUE)
             )
         elif label == "Delete LL":
             sample.delete_random()
@@ -68,8 +67,8 @@ def take_time_for_operation(samples_array, label):
         elif label == "Delete Array":
             if len(sample) > 0:
                 sample.pop(
-                    random.randint(5000, len(sample) - 1)
-                )  # Eliminación aleatoria en array
+                    0
+                )
 
         times.append(int(TIME_MULTIPLIER * (time.time() - start_time)))
 
