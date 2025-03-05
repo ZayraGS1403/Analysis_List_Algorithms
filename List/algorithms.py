@@ -22,34 +22,34 @@ class LinkedList:
         self.head = None
         self.size = 0
 
-    def insert_random(self, value):
-        new_node = Node(value)
+    def insert_random(self, value): # O(n)
+        new_node = Node(value) # O(1)
         if not self.head:
-            self.head = new_node
+            self.head = new_node # O(1)
         else:
-            pos = random.randint(0, self.size)
+            pos = random.randint(0, self.size) # O(1)
             if pos == 0:
-                new_node.next = self.head
-                self.head = new_node
+                new_node.next = self.head   # O(1)
+                self.head = new_node       # O(1)
             else:
-                current = self.head
-                for _ in range(pos - 1):
-                    current = current.next
-                new_node.next = current.next
-                current.next = new_node
+                current = self.head # O(1)
+                for _ in range(pos - 1): # O(n)
+                    current = current.next # O(1)
+                new_node.next = current.next # O(1)
+                current.next = new_node # O(1)
         self.size += 1
 
-    def delete_random(self):
-        if not self.head:
-            return
-        pos = random.randint(0, self.size - 1)
-        if pos == 0:
-            self.head = self.head.next
+    def delete_random(self): # O(n)
+        if not self.head: # O(1)
+            return # O(1)
+        pos = random.randint(0, self.size - 1) # O(1)
+        if pos == 0: # O(1)
+            self.head = self.head.next # O(1)
         else:
-            current = self.head
-            for _ in range(pos - 1):
-                current = current.next
-            current.next = current.next.next
+            current = self.head # O(1)
+            for _ in range(pos - 1): # O(n)
+                current = current.next # O(1)
+            current.next = current.next.next # O(1)
         self.size -= 1
 
     def __str__(self):
@@ -62,72 +62,72 @@ class LinkedList:
 
 
 # DoublyLinkedList
-class DoublyLinkedList:
+class DoublyLinkedList: # O(n)
     def __init__(self):
         self.head = None
         self.tail = None
         self.size = 0
 
-    def insert_random(self, value):
-        new_node = DoublyNode(value)
-        if not self.head:
-            self.head = self.tail = new_node
+    def insert_random(self, value): # O(n)
+        new_node = DoublyNode(value) # O(1)
+        if not self.head: # O(1)
+            self.head = self.tail = new_node # O(1)
         else:
-            pos = random.randint(0, self.size)
-            if pos == 0:
-                new_node.next = self.head
-                self.head.prev = new_node
-                self.head = new_node
+            pos = random.randint(0, self.size) # O(1)
+            if pos == 0: # O(1)
+                new_node.next = self.head # O(1)
+                self.head.prev = new_node # O(1)
+                self.head = new_node # O(1)
             elif pos >= self.size // 2:  # Si la posición está más allá de la mitad
-                current = self.tail
-                for _ in range(self.size - pos):
-                    current = current.prev
-                new_node.next = current.next
-                new_node.prev = current
-                if current.next:
-                    current.next.prev = new_node
+                current = self.tail     # O(1)
+                for _ in range(self.size - pos): # O(n)
+                    current = current.prev # O(1)
+                new_node.next = current.next # O(1)
+                new_node.prev = current # O(1)
+                if current.next: # O(1)
+                    current.next.prev = new_node # O(1)
                 else:
-                    self.tail = new_node
-                current.next = new_node
+                    self.tail = new_node # O(1)
+                current.next = new_node # O(1)
             else:  # Si la posición está en la primera mitad
                 current = self.head
-                for _ in range(pos - 1):
-                    current = current.next
-                new_node.next = current.next
-                new_node.prev = current
-                if current.next:
-                    current.next.prev = new_node
+                for _ in range(pos - 1): # O(n)
+                    current = current.next # O(1)
+                new_node.next = current.next # O(1)
+                new_node.prev = current # O(1)
+                if current.next: # O(1)
+                    current.next.prev = new_node # O(1)
                 else:
-                    self.tail = new_node
+                    self.tail = new_node # O(1)
                 current.next = new_node
         self.size += 1
 
-    def delete_random(self):
-        if not self.head:
+    def delete_random(self): # O(n)
+        if not self.head: # O(1)
             return
-        pos = random.randint(0, self.size - 1)
+        pos = random.randint(0, self.size - 1)  # O(1)
 
         if pos == 0:
-            self.head = self.head.next
+            self.head = self.head.next # O(1)
             if self.head:
-                self.head.prev = None
+                self.head.prev = None # O(1)
             else:
                 self.tail = None
         elif pos >= self.size // 2:
             current = self.tail
-            for _ in range(self.size - pos - 1):
-                current = current.prev
+            for _ in range(self.size - pos - 1): # O(n)
+                current = current.prev # O(1)
         else:
-            current = self.head
-            for _ in range(pos):
+            current = self.head # O(1)
+            for _ in range(pos): # O(n)
                 current = current.next
 
         if current.prev:
-            current.prev.next = current.next
+            current.prev.next = current.next # O(1)
         if current.next:
-            current.next.prev = current.prev
+            current.next.prev = current.prev # O(1)
         else:
-            self.tail = current.prev
+            self.tail = current.prev # O(1)
 
         self.size -= 1
 

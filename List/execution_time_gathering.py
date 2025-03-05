@@ -50,27 +50,25 @@ def take_time_for_operation(samples_array, label):
     times = []
 
     for sample in samples_array:
-        start_time = time.time()
+        start_time = time.perf_counter()
 
         if label == "Insert LL":
             sample.insert_random(random.randint(0, MAX_VALUE))
         elif label == "Insert DLL":
             sample.insert_random(random.randint(0, MAX_VALUE))
         elif label == "Insert Array":
-            sample.insert(
-                0, random.randint(0, MAX_VALUE)
-            )
+            position = random.randint(0, len(sample))
+            sample.insert(position, random.randint(0, MAX_VALUE))
         elif label == "Delete LL":
             sample.delete_random()
         elif label == "Delete DLL":
             sample.delete_random()
         elif label == "Delete Array":
             if len(sample) > 0:
-                sample.pop(
-                    0
-                )
+                position = random.randint(0, len(sample) - 1)
+                sample.pop(position)
 
-        times.append(int(TIME_MULTIPLIER * (time.time() - start_time)))
+        times.append(int(TIME_MULTIPLIER * (time.perf_counter() - start_time)))
 
     times.sort()
     return times[len(times) // 2]
