@@ -19,39 +19,21 @@ Unit tests to ensure the correctness of the implementations.
 ------
 ### Analyze the results
 
-#### Initial Results: Without Optimized Doubly Linked List Traversal
+#### Initial Results
 Insertion Time Analysis
-![img.png](img/img.png)
-![img.png](img/img3.png)
 
-The following graphs represent results before optimizing the doubly linked list traversal. Initially, the list could not traverse backward from the tail to the head, forcing a full traversal to reach the last node for insertion.
+![Imagen de WhatsApp 2025-03-07 a las 08 10 46_628e6c15](https://github.com/user-attachments/assets/b6bbfbdf-0a17-45b9-85ae-7b9144d2e75f)
+
+![Imagen de WhatsApp 2025-03-07 a las 08 13 40_ae7a4a76](https://github.com/user-attachments/assets/d9cafe70-0af2-48ac-a4d5-93e90fa83637)
+
+
 
 Random Deletion Time Analysis
 
-![img.png](img/img2.png)
-![img4.jpg](img/img4.jpg)
+![Imagen de WhatsApp 2025-03-07 a las 08 10 58_e5318226](https://github.com/user-attachments/assets/d6b4f997-ce22-4003-a4d8-cdc646eeff6f)
 
-From the graphs, we observe that the Doubly Linked List takes the longest time to insert a new node. This is because it lacks backward traversal optimization, requiring a full list traversal to insert at the end, similar to a singly linked list.
+![Imagen de WhatsApp 2025-03-07 a las 08 13 48_41813125](https://github.com/user-attachments/assets/6498b7f8-e609-41cd-804a-24073b3bb779)
 
-For random deletions, the Doubly Linked List is the most efficient. This could be due to CPU scheduling and processing time allocation differences.
-
-----------------------------
-#### Optimized Results: With Backward Traversal in Doubly Linked List
-The following graphs represent the results after implementing backward traversal from the tail to the head in the Doubly Linked List.
-
-Optimized Insertion Time Analysis
-
-![img4.jpg](img/img5.jpg)
-![img4.jpg](img/img6.jpg)
-
-After optimization, the Doubly Linked List now performs insertions faster than the Singly Linked List, as it no longer requires a full traversal to reach the last node.
-
-Optimized Deletion Time Analysis
-
-![img4.jpg](img/img7.jpg)
-![img4.jpg](img/img8.jpg)
-
-For random deletions, the Doubly Linked List remains the most efficient compared to other structures.
 
 ---------
 ## Current Coverage
